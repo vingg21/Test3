@@ -1,0 +1,26 @@
+[Unit]
+Description=Retrex's distributed currency daemon
+After=network.target
+
+[Service]
+User=retrex
+Group=retrex
+
+Type=forking
+PIDFile=/var/lib/retrexd/retrexd.pid
+
+ExecStart=/usr/bin/retrexd -daemon -pid=/var/lib/retrexd/retrexd.pid \
+          -conf=/etc/retrex/retrex.conf -datadir=/var/lib/retrexd
+
+ExecStop=-/usr/bin/retrex-cli -conf=/etc/retrex/retrex.conf \
+         -datadir=/var/lib/retrexd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
