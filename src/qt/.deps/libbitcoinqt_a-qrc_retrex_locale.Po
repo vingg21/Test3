@@ -1,0 +1,1 @@
+qt/libbitcoinqt_a-qrc_retrex_locale.o: qt/qrc_retrex_locale.cpp

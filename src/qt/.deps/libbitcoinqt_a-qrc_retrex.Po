@@ -1,0 +1,1 @@
+qt/libbitcoinqt_a-qrc_retrex.o: qt/qrc_retrex.cpp
